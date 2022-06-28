@@ -1,4 +1,4 @@
-# Programming-Languages-assignment
+# Lexical Analyzer for a hypothetical imperative programming language
 
 Assignment instructions:
 
