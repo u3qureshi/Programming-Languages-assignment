@@ -1,4 +1,4 @@
-# Programming-Languages-assignment
+# lexical-analyzer-programming-languages
 
 Assignment instructions:
 
