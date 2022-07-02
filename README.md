@@ -22,6 +22,7 @@ In your program:
           <loop_statement> -> loop (<logic_expression>) <statement>
 
 Sample output of a program without syntax errors:
+------------------------------------------------
 Next token is: 15 Next lexeme is program  
 Next token is: 15 Next lexeme is begin  
 Next token is: 11 Next lexeme is sum1  
