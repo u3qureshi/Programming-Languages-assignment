@@ -153,8 +153,30 @@ class Program:
 
     # <expression> -> <term> { (+|-) <term>}
     def expression(self, listString):
-        print(listString)
+        # We cannot include anything in brackets, example, (var2 + var1) * var3, this is only one <term> with no optional second part
+        # If the expression contains brackets, AND the parentheses are valid, do NOT evaluate anything inside the brackets
+        # If there are brackets, then it MUST be a single term and we can simply send the ENTIRE TERM to the term function
+        if ("(" in listString or ")" in listString):
+            if(self.parenthesesCheck(listString)):
+                self.term(listString)
+            else:
+                raise SyntaxError('The program contains syntax errors.')
+        # if there are no parentheses, and there is a positive or negative sign present
+        elif ("-" in listString):
+            list = listString.split("-")
+            for i in list:
+                i=i.strip()
+                self.term(i)
+        elif ("+" in listString):
+            list = listString.split("+")
+            for i in list:
+                i=i.strip()
+                self.term(i)
+        # If there are no brackets, we can send the entire term to the term function
+        else:
+            self.term(listString)
 
+    # <variable> -> identifier (An identifier is a string that begins with a letter followed by 0 or more letters and/or digits)
     def variable(self, identifier):
         # Check if the identifier is valid:
         # An identifier is a string that begins with a letter followed by 0 or more letters and/or digits
@@ -168,6 +190,27 @@ class Program:
         else:
             raise SyntaxError('The program contains syntax errors.')
 
+    # <term> -> <factor> {(* | /) <factor> }
+    def term(self, listString):
+
+        if ("(" in listString or ")" in listString):
+            if(self.parenthesesCheck(listString)):
+                # Get the content inside the parentheses
+                insideParentheses = listString[listString.find('(')+1:listString.find(')')]
+                print(insideParentheses)
+            else:
+                raise SyntaxError('The program contains syntax errors.')
+        # if there are no parentheses, and there is a positive or negative sign present
+       
+  
+  
+  
+  
+  
+  
+  
+  
+  
     # Function returns true if parentheses are balanced, and false otherwise
     def parenthesesCheck(self, string):
         stack = []
